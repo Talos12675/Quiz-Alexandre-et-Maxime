@@ -1,0 +1,30 @@
+{
+    "nombre_questions": 5,
+    "questions": [
+        {
+            "question": "Quel est la capitale du Pérou ?",
+            "reponses": ["Santiago", "Bogota", "Quito", "Lima"],
+            "reponse_correcte": "Lima"
+        },
+        {
+            "question": "Comment s'appelle le petit du lion ?",
+            "reponses": ["louveteau", "chaton", "lionceau", "tigron"],
+            "reponse_correcte": "lionceau"
+        },
+        {
+            "question": "Combien de secondes il y a dans une heure ?",
+            "reponses": ["1", "3600", "100", "60"],
+            "reponse_correcte": "3600"
+        },
+        {
+            "question": "Quelle est la plus grande planète du système solaire ?",
+            "reponses": ["Mars", "Saturne", "Jupiter", "Neptune"],
+            "reponse_correcte": "Jupiter"
+        },
+        {
+            "question": "Dans quel pays se trouve la ville de Paris ?",
+            "reponses": ["France", "Allemagne", "Algérie", "Royaume-Uni"],
+            "reponse_correcte": "France"
+        }
+    ]
+}
