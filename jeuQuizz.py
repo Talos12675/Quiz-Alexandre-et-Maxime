@@ -1,116 +1,159 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Jan  9 18:01:22 2023
-
-@author: SOPHIE
-"""
-
+# Programme de quiz pour réviser
 import json
 import random
 
-def charger_config():
-    with open('quiz_config.json', 'r', encoding='utf-8') as f:
-        return json.load(f)
+def lire_fichier_questions():
+    with open('quiz_config.json', 'r', encoding='utf-8') as fichier:
+        return json.load(fichier)
 
-def selectionner_questions(config):
-    toutes_questions = config['questions']
-    nombre_questions = min(config['nombre_questions'], len(toutes_questions))
-    return random.sample(toutes_questions, nombre_questions)
+def poser_question_simple(question):
+    print("\nQuestion:", question['question'])
+    
+    # On prend la bonne réponse et 2 mauvaises au hasard
+    mauvaises_reponses = []
+    for reponse in question['reponses_possibles']:
+        if reponse != question['reponse_correcte']:
+            mauvaises_reponses.append(reponse)
+    
+    # On mélange 2 mauvaises réponses avec la bonne
+    reponses_a_afficher = random.sample(mauvaises_reponses, 2)
+    reponses_a_afficher.append(question['reponse_correcte'])
+    random.shuffle(reponses_a_afficher)
+    
+    # On affiche les 3 choix
+    for i in range(3):
+        print(f"{i+1}. {reponses_a_afficher[i]}")
+    
+    # L'utilisateur choisit une réponse
+    choix = input("\nTa réponse (1, 2 ou 3): ")
+    
+    # On vérifie si c'est la bonne réponse
+    if choix in ['1', '2', '3']:
+        reponse_choisie = reponses_a_afficher[int(choix)-1]
+        return reponse_choisie
+    return "Réponse invalide"
 
-def afficher_question(question, numero):
-    print(f"\nQuestion {numero}:")
-    print(question['question'])
-    for i, reponse in enumerate(question['reponses'], 1):
-        print(f"{i}. {reponse}")
-    return input("\nVotre réponse (entrez uniquement le numéro 1, 2, 3 ou 4): ")
+def poser_question_multiple(question):
+    print("\nQuestion:", question['question'])
+    
+    # On prend toutes les bonnes réponses
+    reponses_a_afficher = question['reponses_correctes'].copy()
+    
+    # On ajoute des mauvaises réponses pour compléter
+    nb_reponses_total = question['nombre_reponses_a_afficher']
+    nb_mauvaises_reponses = nb_reponses_total - len(reponses_a_afficher)
+    
+    # On cherche les mauvaises réponses possibles
+    mauvaises_reponses = []
+    for reponse in question['reponses_possibles']:
+        if reponse not in question['reponses_correctes']:
+            mauvaises_reponses.append(reponse)
+    
+    # On ajoute le bon nombre de mauvaises réponses
+    reponses_a_afficher.extend(random.sample(mauvaises_reponses, nb_mauvaises_reponses))
+    random.shuffle(reponses_a_afficher)
+    
+    # On affiche tous les choix
+    for i in range(len(reponses_a_afficher)):
+        print(f"{i+1}. {reponses_a_afficher[i]}")
+    
+    print("\nEntrez les numéros des bonnes réponses, séparés par des espaces")
+    choix = input(f"Vos réponses (1 à {nb_reponses_total}): ")
+    
+    # On transforme la réponse en liste de réponses
+    try:
+        numeros_choisis = [int(x) for x in choix.split()]
+        reponses_choisies = []
+        for num in numeros_choisis:
+            if 1 <= num <= nb_reponses_total:
+                reponses_choisies.append(reponses_a_afficher[num-1])
+        return reponses_choisies
+    except:
+        return "Réponse invalide"
 
-def quiz(questions_selectionnees):
-    points = 0
-    resultats = []  # Liste pour stocker les résultats
-    for i, question in enumerate(questions_selectionnees, 1):
-        reponse_utilisateur = afficher_question(question, i)
-        try:
-            index_reponse = int(reponse_utilisateur) - 1
-            reponse_donnee = question['reponses'][index_reponse]
-            est_correct = reponse_donnee.lower() == question['reponse_correcte'].lower()
-            if est_correct:
-                points += 1
-                print("Vous avez répondu juste.")
+def jouer():
+    print("=== QUIZ DE RÉVISION ===")
+    nom = input("\nComment tu t'appelles ? ")
+    print(f"Salut {nom} ! C'est parti !")
+    
+    try:
+        # On charge les questions
+        questions = lire_fichier_questions()['questions']
+        
+        # On prend 5 questions au hasard
+        questions_quiz = random.sample(questions, 5)
+        
+        score = 0
+        reponses_joueur = []
+        
+        # On pose les 5 questions
+        for numero, question in enumerate(questions_quiz, 1):
+            if question['type'] == 'simple':
+                reponse = poser_question_simple(question)
+                if reponse == "Réponse invalide":
+                    print("Réponse invalide !")
+                    reussi = False
+                else:
+                    reussi = (reponse == question['reponse_correcte'])
+                    if reussi:
+                        print("Bien joué !")
+                        score += 1
+                    else:
+                        print(f"Dommage ! La bonne réponse était: {question['reponse_correcte']}")
             else:
-                print("La bonne réponse était \"{}\".".format(question['reponse_correcte']))
-            # Stocker le résultat
-            resultats.append({
-                'question': question['question'],
-                'correct': est_correct,
-                'reponse_donnee': reponse_donnee,
-                'reponse_correcte': question['reponse_correcte']
-            })
-        except (ValueError, IndexError):
-            print("Réponse invalide. La bonne réponse était \"{}\".".format(question['reponse_correcte']))
-            resultats.append({
-                'question': question['question'],
-                'correct': False,
-                'reponse_donnee': "Réponse invalide",
-                'reponse_correcte': question['reponse_correcte']
-            })
-    
-    # Afficher le récapitulatif
-    print("\n=== Récapitulatif de vos réponses ===")
-    for i, resultat in enumerate(resultats, 1):
-        statut = "✓ Correct" if resultat['correct'] else "✗ Incorrect"
-        print(f"\nQuestion {i}: {resultat['question']}")
-        print(f"Votre réponse : {resultat['reponse_donnee']}")
-        if not resultat['correct']:
-            print(f"Bonne réponse : {resultat['reponse_correcte']}")
-        print(f"Statut : {statut}")
-    
-    # Calculer le pourcentage de réussite
-    pourcentage = (points / len(questions_selectionnees)) * 100
-    
-    # Déterminer le niveau de réussite
-    message = ""
-    if pourcentage == 100:
-        message = "Parfait ! Vous êtes un expert !"
-    elif pourcentage >= 75:
-        message = "Excellent ! Vous avez de très bonnes connaissances !"
-    elif pourcentage >= 50:
-        message = "Bravo ! Continuez comme ça !"
-    else:
-        message = "Dommage ! Révisez vos cours !"
-    
-    return points, pourcentage, message
-
-def main():
-    while True:
-        print("*** Début du Quiz ***\n")
-        nom = input("Entrez votre nom: ").title()
-        print()
-
-        try:
-            config = charger_config()
-            questions_selectionnees = selectionner_questions(config)
-            points, pourcentage, message = quiz(questions_selectionnees)
-            print("\n----------------------------------------")
-            print("Vous avez repondu juste à {1} des {2} questions de ce quiz.".format(
-                nom, points, len(questions_selectionnees)))
-            print(f"Pourcentage de réussite : {pourcentage:.1f}%")
-            print(message)
+                reponse = poser_question_multiple(question)
+                if reponse == "Réponse invalide":
+                    print("Réponse invalide !")
+                    reussi = False
+                else:
+                    reussi = (sorted(reponse) == sorted(question['reponses_correctes']))
+                    if reussi:
+                        print("Bien joué ! Tu as trouvé toutes les bonnes réponses !")
+                        score += 1
+                    else:
+                        print("Dommage ! Les bonnes réponses étaient:", ", ".join(question['reponses_correctes']))
             
-            # Demander si l'utilisateur veut rejouer
-            rejouer = input("\nVoulez-vous rejouer ? (oui/non): ").lower()
-            if rejouer != 'oui':
-                print("\nMerci d'avoir joué ! À bientôt !")
-                break
+            # On garde la réponse pour le résumé
+            reponses_joueur.append({
+                'question': question['question'],
+                'reponse': reponse,
+                'reussi': reussi,
+                'correction': question['reponse_correcte'] if question['type'] == 'simple' else question['reponses_correctes']
+            })
+        
+        # On affiche le résumé
+        print("\n=== TES RÉSULTATS ===")
+        for i, rep in enumerate(reponses_joueur, 1):
+            print(f"\nQuestion {i}: {rep['question']}")
+            if isinstance(rep['reponse'], list):
+                print(f"Ta réponse: {', '.join(rep['reponse'])}")
+            else:
+                print(f"Ta réponse: {rep['reponse']}")
+            if not rep['reussi']:
+                if isinstance(rep['correction'], list):
+                    print(f"Bonnes réponses: {', '.join(rep['correction'])}")
+                else:
+                    print(f"Bonne réponse: {rep['correction']}")
+        
+        # Score final
+        print(f"\nTon score: {score}/5 ({score*20}%)")
+        
+        if score == 5:
+            print("T'es trop fort !")
+        elif score >= 3:
+            print("Pas mal du tout !")
+        else:
+            print("Continue de réviser, tu vas y arriver !")
+        
+        # On propose de rejouer
+        if input("\nTu veux rejouer ? (oui/non): ") == "oui":
+            jouer()
+        else:
+            print("\nÀ bientôt !")
+            
+    except:
+        print("Il y a eu un problème avec le fichier de questions...")
 
-        except FileNotFoundError:
-            print("Erreur: Le fichier de configuration n'a pas été trouvé.")
-            break
-        except json.JSONDecodeError:
-            print("Erreur: Le fichier de configuration est mal formaté.")
-            break
-        except Exception as e:
-            print(f"Une erreur inattendue s'est produite: {str(e)}")
-            break
-
+# On lance le jeu
 if __name__ == "__main__":
-    main()
+    jouer()
