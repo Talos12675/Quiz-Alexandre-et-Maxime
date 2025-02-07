@@ -1,5 +1,5 @@
-# Quiz Alexandre et Maxime
+# Quiz Alexandre MJ et Maxime J
 
-Talos12675 = Alexandre
+Talos12675 = Alexandre MJ
 
-maxtheking1234 = Maxime
+maxtheking1234 = Maxime J
