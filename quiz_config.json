@@ -1,145 +1,230 @@
 {
-    "nombre_questions": 20,
-    "questions": [
+    "quiz_list": [
         {
-            "question": "Quelle est la capitale du Pérou ?",
-            "nombre_reponses_a_afficher": 3,
-            "reponses_possibles": ["Santiago", "Bogota", "Quito", "Lima", "Buenos Aires", "Caracas"],
-            "reponse_correcte": "Lima",
-            "type": "simple"
+            "id": "culture_generale",
+            "titre": "Culture Générale",
+            "description": "Testez vos connaissances générales",
+            "nombre_questions": 20,
+            "questions": [
+                {
+                    "question": "Quelle est la capitale du Pérou ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Santiago", "Bogota", "Quito", "Lima", "Buenos Aires", "Caracas"],
+                    "reponse_correcte": "Lima",
+                    "type": "simple"
+                },
+                {
+                    "question": "En quelle année a eu lieu la Révolution française ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["1789", "1792", "1776", "1804", "1815", "1830"],
+                    "reponse_correcte": "1789",
+                    "type": "simple"
+                },
+                {
+                    "question": "Quel est le symbole chimique de l'or ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Ag", "Fe", "Au", "Cu", "Pb", "Pt"],
+                    "reponse_correcte": "Au",
+                    "type": "simple"
+                },
+                {
+                    "question": "Quelle planète est surnommée la planète rouge ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Vénus", "Mars", "Jupiter", "Mercure", "Saturne", "Uranus"],
+                    "reponse_correcte": "Mars",
+                    "type": "simple"
+                },
+                {
+                    "question": "Quel est l'animal le plus rapide du monde ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Guépard", "Lion", "Antilope", "Aigle", "Lévrier", "Gazelle"],
+                    "reponse_correcte": "Guépard",
+                    "type": "simple"
+                },
+                {
+                    "question": "Dans quel pays se trouve le Taj Mahal ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Pakistan", "Inde", "Bangladesh", "Népal", "Sri Lanka", "Chine"],
+                    "reponse_correcte": "Inde",
+                    "type": "simple"
+                },
+                {
+                    "question": "Quel est le plus petit pays du monde ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Monaco", "Vatican", "Saint-Marin", "Liechtenstein", "Andorre", "Malte"],
+                    "reponse_correcte": "Vatican",
+                    "type": "simple"
+                },
+                {
+                    "question": "Quelle est la monnaie du Japon ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Won", "Yuan", "Yen", "Ringgit", "Dollar", "Rouble"],
+                    "reponse_correcte": "Yen",
+                    "type": "simple"
+                },
+                {
+                    "question": "Qui a écrit Les Misérables ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Émile Zola", "Victor Hugo", "Gustave Flaubert", "Honoré de Balzac", "Albert Camus", "Molière"],
+                    "reponse_correcte": "Victor Hugo",
+                    "type": "simple"
+                },
+                {
+                    "question": "Quel est le plus grand océan du monde ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Atlantique", "Indien", "Pacifique", "Arctique", "Antarctique", "Méditerranée"],
+                    "reponse_correcte": "Pacifique",
+                    "type": "simple"
+                },
+                {
+                    "question": "Quels sont les pays qui bordent la France ?",
+                    "nombre_reponses_a_afficher": 8,
+                    "reponses_possibles": ["Allemagne", "Belgique", "Espagne", "Italie", "Luxembourg", "Suisse", "Portugal", "Pays-Bas"],
+                    "reponses_correctes": ["Allemagne", "Belgique", "Espagne", "Italie", "Suisse", "Luxembourg"],
+                    "type": "multiple"
+                },
+                {
+                    "question": "Quelles sont les couleurs du drapeau français ?",
+                    "nombre_reponses_a_afficher": 5,
+                    "reponses_possibles": ["Bleu", "Blanc", "Rouge", "Vert", "Jaune", "Noir"],
+                    "reponses_correctes": ["Bleu", "Blanc", "Rouge"],
+                    "type": "multiple"
+                },
+                {
+                    "question": "Quels sont les langages de programmation les plus populaires ?",
+                    "nombre_reponses_a_afficher": 6,
+                    "reponses_possibles": ["Python", "Java", "JavaScript", "C++", "PHP", "Ruby", "Swift", "Go"],
+                    "reponses_correctes": ["Python", "Java", "JavaScript", "C++"],
+                    "type": "multiple"
+                },
+                {
+                    "question": "Quels sont les océans de la Terre ?",
+                    "nombre_reponses_a_afficher": 7,
+                    "reponses_possibles": ["Pacifique", "Atlantique", "Indien", "Arctique", "Antarctique", "Méditerranée", "Mer Rouge", "Mer Noire"],
+                    "reponses_correctes": ["Pacifique", "Atlantique", "Indien", "Arctique", "Antarctique"],
+                    "type": "multiple"
+                },
+                {
+                    "question": "Quels sont les pays scandinaves ?",
+                    "nombre_reponses_a_afficher": 4,
+                    "reponses_possibles": ["Norvège", "Suède", "Danemark", "Finlande", "Islande", "Pays-Bas", "Estonie", "Lettonie"],
+                    "reponses_correctes": ["Norvège", "Suède", "Danemark"],
+                    "type": "multiple"
+                },
+                {
+                    "question": "Quels sont les sens du corps humain ?",
+                    "nombre_reponses_a_afficher": 6,
+                    "reponses_possibles": ["Vue", "Ouïe", "Odorat", "Goût", "Toucher", "Équilibre", "Faim", "Soif"],
+                    "reponses_correctes": ["Vue", "Ouïe", "Odorat", "Goût", "Toucher"],
+                    "type": "multiple"
+                },
+                {
+                    "question": "Quelles sont les couleurs primaires ?",
+                    "nombre_reponses_a_afficher": 6,
+                    "reponses_possibles": ["Rouge", "Bleu", "Vert", "Jaune", "Orange", "Rose", "Violet", "Indigo", "Magenta"],
+                    "reponses_correctes": ["Rouge", "Bleu", "Vert", "Jaune", "Orange"],
+                    "type": "multiple"
+                },
+                {
+                    "question": "Quel(s) est(sont) la(les) vitamine(s) essentielle(s) ?",
+                    "nombre_reponses_a_afficher": 5,
+                    "reponses_possibles": ["A", "C", "F", "G", "H", "I", "J"],
+                    "reponses_correctes": ["A", "C"],
+                    "type": "multiple"
+                },
+                {
+                    "question": "Quels sont les états de l'eau ?",
+                    "nombre_reponses_a_afficher": 4,
+                    "reponses_possibles": ["Solide", "Liquide", "Gazeux", "Plasma", "Gélatineux", "Cristallin"],
+                    "reponses_correctes": ["Solide", "Liquide", "Gazeux"],
+                    "type": "multiple"
+                },
+                {
+                    "question": "Quels sont les métaux précieux ?",
+                    "nombre_reponses_a_afficher": 5,
+                    "reponses_possibles": ["Or", "Argent", "Platine", "Rhodium", "Cuivre", "Fer", "Aluminium"],
+                    "reponses_correctes": ["Or", "Argent", "Platine"],
+                    "type": "multiple"
+                }
+            ]
         },
         {
-            "question": "En quelle année a eu lieu la Révolution française ?",
-            "nombre_reponses_a_afficher": 3,
-            "reponses_possibles": ["1789", "1792", "1776", "1804", "1815", "1830"],
-            "reponse_correcte": "1789",
-            "type": "simple"
-        },
-        {
-            "question": "Quel est le symbole chimique de l'or ?",
-            "nombre_reponses_a_afficher": 3,
-            "reponses_possibles": ["Ag", "Fe", "Au", "Cu", "Pb", "Pt"],
-            "reponse_correcte": "Au",
-            "type": "simple"
-        },
-        {
-            "question": "Quelle planète est surnommée la planète rouge ?",
-            "nombre_reponses_a_afficher": 3,
-            "reponses_possibles": ["Vénus", "Mars", "Jupiter", "Mercure", "Saturne", "Uranus"],
-            "reponse_correcte": "Mars",
-            "type": "simple"
-        },
-        {
-            "question": "Quel est l'animal le plus rapide du monde ?",
-            "nombre_reponses_a_afficher": 3,
-            "reponses_possibles": ["Guépard", "Lion", "Antilope", "Aigle", "Lévrier", "Gazelle"],
-            "reponse_correcte": "Guépard",
-            "type": "simple"
-        },
-        {
-            "question": "Dans quel pays se trouve le Taj Mahal ?",
-            "nombre_reponses_a_afficher": 3,
-            "reponses_possibles": ["Pakistan", "Inde", "Bangladesh", "Népal", "Sri Lanka", "Chine"],
-            "reponse_correcte": "Inde",
-            "type": "simple"
-        },
-        {
-            "question": "Quel est le plus petit pays du monde ?",
-            "nombre_reponses_a_afficher": 3,
-            "reponses_possibles": ["Monaco", "Vatican", "Saint-Marin", "Liechtenstein", "Andorre", "Malte"],
-            "reponse_correcte": "Vatican",
-            "type": "simple"
-        },
-        {
-            "question": "Quelle est la monnaie du Japon ?",
-            "nombre_reponses_a_afficher": 3,
-            "reponses_possibles": ["Won", "Yuan", "Yen", "Ringgit", "Dollar", "Rouble"],
-            "reponse_correcte": "Yen",
-            "type": "simple"
-        },
-        {
-            "question": "Qui a écrit Les Misérables ?",
-            "nombre_reponses_a_afficher": 3,
-            "reponses_possibles": ["Émile Zola", "Victor Hugo", "Gustave Flaubert", "Honoré de Balzac", "Albert Camus", "Molière"],
-            "reponse_correcte": "Victor Hugo",
-            "type": "simple"
-        },
-        {
-            "question": "Quel est le plus grand océan du monde ?",
-            "nombre_reponses_a_afficher": 3,
-            "reponses_possibles": ["Atlantique", "Indien", "Pacifique", "Arctique", "Antarctique", "Méditerranée"],
-            "reponse_correcte": "Pacifique",
-            "type": "simple"
-        },
-        {
-            "question": "Quels sont les pays qui bordent la France ?",
-            "nombre_reponses_a_afficher": 5,
-            "reponses_possibles": ["Allemagne", "Belgique", "Espagne", "Italie", "Luxembourg", "Suisse", "Portugal", "Pays-Bas"],
-            "reponses_correctes": ["Allemagne", "Belgique", "Espagne", "Italie", "Suisse", "Luxembourg"],
-            "type": "multiple"
-        },
-        {
-            "question": "Quelles sont les couleurs du drapeau français ?",
-            "nombre_reponses_a_afficher": 4,
-            "reponses_possibles": ["Bleu", "Blanc", "Rouge", "Vert", "Jaune", "Noir"],
-            "reponses_correctes": ["Bleu", "Blanc", "Rouge"],
-            "type": "multiple"
-        },
-        {
-            "question": "Quels sont les langages de programmation les plus populaires ?",
-            "nombre_reponses_a_afficher": 5,
-            "reponses_possibles": ["Python", "Java", "JavaScript", "C++", "PHP", "Ruby", "Swift", "Go"],
-            "reponses_correctes": ["Python", "Java", "JavaScript", "C++"],
-            "type": "multiple"
-        },
-        {
-            "question": "Quels sont les océans de la Terre ?",
-            "nombre_reponses_a_afficher": 6,
-            "reponses_possibles": ["Pacifique", "Atlantique", "Indien", "Arctique", "Antarctique", "Méditerranée", "Mer Rouge", "Mer Noire"],
-            "reponses_correctes": ["Pacifique", "Atlantique", "Indien", "Arctique", "Antarctique"],
-            "type": "multiple"
-        },
-        {
-            "question": "Quels sont les pays scandinaves ?",
-            "nombre_reponses_a_afficher": 5,
-            "reponses_possibles": ["Norvège", "Suède", "Danemark", "Finlande", "Islande", "Pays-Bas", "Estonie", "Lettonie"],
-            "reponses_correctes": ["Norvège", "Suède", "Danemark"],
-            "type": "multiple"
-        },
-        {
-            "question": "Quels sont les sens du corps humain ?",
-            "nombre_reponses_a_afficher": 6,
-            "reponses_possibles": ["Vue", "Ouïe", "Odorat", "Goût", "Toucher", "Équilibre", "Faim", "Soif"],
-            "reponses_correctes": ["Vue", "Ouïe", "Odorat", "Goût", "Toucher"],
-            "type": "multiple"
-        },
-        {
-            "question": "Quelles sont les couleurs primaires ?",
-            "nombre_reponses_a_afficher": 6,
-            "reponses_possibles": ["Rouge", "Bleu", "Vert", "Jaune", "Orange", "Rose", "Violet", "Indigo", "Magenta"],
-            "reponses_correctes": ["Rouge", "Bleu", "Vert", "Jaune", "Orange"],
-            "type": "multiple"
-        },
-        {
-            "question": "Quels sont les vitamines essentielles ?",
-            "nombre_reponses_a_afficher": 5,
-            "reponses_possibles": ["A", "B", "C", "D", "E", "K", "F", "H"],
-            "reponses_correctes": ["A", "B", "C", "D", "E"],
-            "type": "multiple"
-        },
-        {
-            "question": "Quels sont les états de l'eau ?",
-            "nombre_reponses_a_afficher": 4,
-            "reponses_possibles": ["Solide", "Liquide", "Gazeux", "Plasma", "Gélatineux", "Cristallin"],
-            "reponses_correctes": ["Solide", "Liquide", "Gazeux"],
-            "type": "multiple"
-        },
-        {
-            "question": "Quels sont les métaux précieux ?",
-            "nombre_reponses_a_afficher": 5,
-            "reponses_possibles": ["Or", "Argent", "Platine", "Palladium", "Rhodium", "Cuivre", "Fer", "Aluminium"],
-            "reponses_correctes": ["Or", "Argent", "Platine", "Palladium"],
-            "type": "multiple"
+            "id": "geographie",
+            "titre": "Géographie",
+            "description": "Testez vos connaissances en géographie",
+            "nombre_questions": 10,
+            "questions": [
+                {
+                    "question": "Quelle est la capitale de l'Australie ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Sydney", "Melbourne", "Canberra", "Perth", "Brisbane", "Adelaide"],
+                    "reponse_correcte": "Canberra",
+                    "type": "simple"
+                },
+                {
+                    "question": "Quel est le plus grand pays du monde ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Canada", "Chine", "États-Unis", "Russie", "Brésil", "Australie"],
+                    "reponse_correcte": "Russie",
+                    "type": "simple"
+                },
+                {
+                    "question": "Sur quel continent se trouve l'Égypte ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Afrique", "Asie", "Europe", "Amérique", "Océanie"],
+                    "reponse_correcte": "Afrique",
+                    "type": "simple"
+                },
+                {
+                    "question": "Quel est le plus long fleuve du monde ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Nil", "Amazone", "Mississippi", "Yangtsé", "Congo", "Danube"],
+                    "reponse_correcte": "Nil",
+                    "type": "simple"
+                },
+                {
+                    "question": "Dans quel pays se trouve le Mont Everest ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Chine", "Népal", "Inde", "Pakistan", "Bhoutan", "Tibet"],
+                    "reponse_correcte": "Népal",
+                    "type": "simple"
+                },
+                {
+                    "question": "Quelle est la plus grande île du monde ?",
+                    "nombre_reponses_a_afficher": 3,
+                    "reponses_possibles": ["Madagascar", "Groenland", "Nouvelle-Guinée", "Bornéo", "Sumatra", "Grande-Bretagne"],
+                    "reponse_correcte": "Groenland",
+                    "type": "simple"
+                },
+                {
+                    "question": "Quels pays font partie de la Scandinavie ?",
+                    "nombre_reponses_a_afficher": 5,
+                    "reponses_possibles": ["Norvège", "Suède", "Danemark", "Finlande", "Islande", "Estonie", "Lettonie"],
+                    "reponses_correctes": ["Norvège", "Suède", "Danemark"],
+                    "type": "multiple"
+                },
+                {
+                    "question": "Quels sont les pays qui bordent la Méditerranée ?",
+                    "nombre_reponses_a_afficher": 6,
+                    "reponses_possibles": ["France", "Espagne", "Italie", "Grèce", "Maroc", "Algérie", "Portugal", "Allemagne"],
+                    "reponses_correctes": ["France", "Espagne", "Italie", "Grèce", "Maroc"],
+                    "type": "multiple"
+                },
+                {
+                    "question": "Quels sont les pays du Benelux ?",
+                    "nombre_reponses_a_afficher": 5,
+                    "reponses_possibles": ["Belgique", "Pays-Bas", "Luxembourg", "Allemagne", "France", "Suisse"],
+                    "reponses_correctes": ["Belgique", "Pays-Bas", "Luxembourg"],
+                    "type": "multiple"
+                },
+                {
+                    "question": "Quels sont les océans qui bordent l'Afrique ?",
+                    "nombre_reponses_a_afficher": 4,
+                    "reponses_possibles": ["Atlantique", "Indien", "Pacifique", "Arctique", "Antarctique"],
+                    "reponses_correctes": ["Atlantique", "Indien"],
+                    "type": "multiple"
+                }
+            ]
         }
     ]
 }
