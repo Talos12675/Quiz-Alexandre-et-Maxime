@@ -160,8 +160,7 @@
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Louis XIV", "Napoléon", "François Ier", "Henri IV", "Louis XVI", "Louis XV"],
                     "reponse_correcte": "Louis XIV",
-                    "type": "simple",
-                    "indice": "Il a fait construire le château de Versailles"
+                    "type": "simple"
                 },
                 {
                     "question": "Comment s'appelle le personnage qui a résisté aux Romains avec sa potion magique ?",
