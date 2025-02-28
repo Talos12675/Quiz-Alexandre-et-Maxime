@@ -1,166 +1,181 @@
-# Programme de quiz pour réviser
+# Mon super quiz pour réviser!!
 import json
 import random
 
-def charger_questions():
-    with open('quiz_config.json', 'r', encoding='utf-8') as fichier:
-        return json.load(fichier)
+def lire_fichier():
+    with open('quiz_config.json', 'r', encoding='utf-8') as f:
+        return json.load(f)
 
-def poser_question_simple(question):
-    print("\nQuestion:", question['question'])
+def question_simple(q):
+    print("\nQuestion:", q['question'])
     
-    # On prend des réponses au hasard
-    mauvaises_reponses = []
-    bonne_reponse = question['reponse_correcte']
+    # Je mets la bonne réponse de côté
+    bonne_rep = q['reponse_correcte']
+    autres_rep = []
     
-    # On fait la liste des mauvaises réponses
-    for reponse in question['reponses_possibles']:
-        if reponse != bonne_reponse:
-            mauvaises_reponses.append(reponse)
+    # Je prends les mauvaises réponses
+    for r in q['reponses_possibles']:
+        if r != bonne_rep:
+            autres_rep.append(r)
     
-    # On mélange tout
-    reponses_melangees = random.sample(mauvaises_reponses, 2)
-    reponses_melangees.append(bonne_reponse)
-    random.shuffle(reponses_melangees)
+    # Je mélange tout
+    rep_a_montrer = random.sample(autres_rep, 2)
+    rep_a_montrer.append(bonne_rep)
+    random.shuffle(rep_a_montrer)
     
-    # On montre les choix
+    # J'affiche les réponses
     for i in range(3):
-        print(f"{i+1}. {reponses_melangees[i]}")
+        print(f"{i+1}. {rep_a_montrer[i]}")
     
-    # On demande la réponse
-    reponse_utilisateur = input("\nTa réponse (1, 2 ou 3): ")
+    # Je propose l'indice si y'en a un
+    if 'indice' in q:
+        print("\nTu veux un indice? Tape 'i'. Sinon, donne ta réponse!")
     
-    # On vérifie
-    if reponse_utilisateur in ['1', '2', '3']:
-        choix = reponses_melangees[int(reponse_utilisateur)-1]
+    # Je demande la réponse
+    rep = input("\nTa réponse (1, 2 ou 3): ")
+    
+    # Si l'utilisateur veut l'indice
+    if rep.lower() == 'i' and 'indice' in q:
+        print(f"\nIndice: {q['indice']}")
+        rep = input("Maintenant donne ta réponse (1, 2 ou 3): ")
+    
+    # Je vérifie si c'est bon
+    if rep in ['1', '2', '3']:
+        choix = rep_a_montrer[int(rep)-1]
         return choix
-    return "Pas compris ta réponse..."
+    return "J'ai pas compris..."
 
-def poser_question_multiple(question):
-    print("\nQuestion:", question['question'])
+def question_multiple(q):
+    print("\nQuestion:", q['question'])
     
-    # On prépare les réponses
-    bonnes_reponses = question['reponses_correctes'].copy()
-    nb_total_reponses = question['nombre_reponses_a_afficher']
+    bonnes_rep = q['reponses_correctes'].copy()
+    nb_rep_total = q['nombre_reponses_a_afficher']
     
-    # On cherche combien de mauvaises réponses on doit ajouter
-    nb_mauvaises_reponses = nb_total_reponses - len(bonnes_reponses)
+    # Je calcule combien de mauvaises réponses je dois mettre
+    nb_mauvaises = nb_rep_total - len(bonnes_rep)
     
-    # On fait la liste des mauvaises réponses possibles
-    mauvaises_reponses = []
-    for reponse in question['reponses_possibles']:
-        if reponse not in bonnes_reponses:
-            mauvaises_reponses.append(reponse)
+    # Je fais la liste des mauvaises réponses
+    mauvaises_rep = []
+    for r in q['reponses_possibles']:
+        if r not in bonnes_rep:
+            mauvaises_rep.append(r)
     
-    # On mélange tout
-    toutes_reponses = bonnes_reponses + random.sample(mauvaises_reponses, nb_mauvaises_reponses)
-    random.shuffle(toutes_reponses)
+    # Je mélange tout
+    toutes_rep = bonnes_rep + random.sample(mauvaises_rep, nb_mauvaises)
+    random.shuffle(toutes_rep)
     
-    # On montre les choix
-    for i in range(len(toutes_reponses)):
-        print(f"{i+1}. {toutes_reponses[i]}")
+    # J'affiche les choix
+    for i in range(len(toutes_rep)):
+        print(f"{i+1}. {toutes_rep[i]}")
     
-    print("\nDonne les numéros des bonnes réponses avec des espaces entre")
-    reponse_utilisateur = input(f"Tes réponses (entre 1 et {nb_total_reponses}): ")
+    # Je propose l'indice si y'en a un
+    if 'indice' in q:
+        print("\nTu veux un indice? Tape 'i'. Sinon, donne ta réponse!")
     
-    # On regarde ce que l'utilisateur a choisi
+    print("\nDonne les numéros des bonnes réponses avec des espaces")
+    rep = input(f"Tes réponses (entre 1 et {nb_rep_total}): ")
+    
+    # Si l'utilisateur veut l'indice
+    if rep.lower() == 'i' and 'indice' in q:
+        print(f"\nIndice: {q['indice']}")
+        rep = input(f"Maintenant donne tes réponses (entre 1 et {nb_rep_total}): ")
+    
+    # Je regarde ce que l'utilisateur a mis
     try:
-        numeros_choisis = [int(x) for x in reponse_utilisateur.split()]
-        reponses_choisies = []
-        for num in numeros_choisis:
-            if 1 <= num <= nb_total_reponses:
-                reponses_choisies.append(toutes_reponses[num-1])
-        return reponses_choisies
+        numeros = [int(x) for x in rep.split()]
+        reponses = []
+        for n in numeros:
+            if 1 <= n <= nb_rep_total:
+                reponses.append(toutes_rep[n-1])
+        return reponses
     except:
-        return "Pas compris ta réponse..."
+        return "J'ai pas compris..."
 
-def lancer_quiz(quiz):
+def faire_quiz(quiz):
     try:
-        questions = quiz['questions']
-        nb_questions = min(5, len(questions))
-        questions_du_quiz = random.sample(questions, nb_questions)
-        
-        points = 0
-        historique = []
+        # Je prends 5 questions au hasard
+        mes_questions = random.sample(quiz['questions'], 5)
+        score = 0
+        reponses = []
         
         print(f"\n=== {quiz['titre'].upper()} ===")
         print(quiz['description'])
         
-        # On pose les questions une par une
-        for num, question in enumerate(questions_du_quiz, 1):
-            if question['type'] == 'simple':
-                reponse = poser_question_simple(question)
-                if reponse == "Pas compris ta réponse...":
-                    print("Je n'ai pas compris ta réponse!")
-                    reussite = False
+        # Je pose les questions
+        for num, q in enumerate(mes_questions, 1):
+            if q['type'] == 'simple':
+                rep = question_simple(q)
+                if rep == "J'ai pas compris...":
+                    print("Je comprends pas ce que tu as écrit!")
+                    ok = False
                 else:
-                    reussite = (reponse == question['reponse_correcte'])
-                    if reussite:
-                        print("Super !")
-                        points += 1
+                    ok = (rep == q['reponse_correcte'])
+                    if ok:
+                        print("Bravo!!")
+                        score += 1
                     else:
-                        print(f"Raté... La bonne réponse était: {question['reponse_correcte']}")
+                        print(f"Raté... Fallait répondre: {q['reponse_correcte']}")
             else:
-                reponse = poser_question_multiple(question)
-                if reponse == "Pas compris ta réponse...":
-                    print("Je n'ai pas compris ta réponse!")
-                    reussite = False
+                rep = question_multiple(q)
+                if rep == "J'ai pas compris...":
+                    print("Je comprends pas ce que tu as écrit!")
+                    ok = False
                 else:
-                    reussite = (sorted(reponse) == sorted(question['reponses_correctes']))
-                    if reussite:
-                        print("Super ! Tu as tout trouvé !")
-                        points += 1
+                    ok = (sorted(rep) == sorted(q['reponses_correctes']))
+                    if ok:
+                        print("Trop fort! T'as tout trouvé!")
+                        score += 1
                     else:
-                        print("Raté... Les bonnes réponses étaient:", ", ".join(question['reponses_correctes']))
+                        print("Raté... Les bonnes réponses étaient:", ", ".join(q['reponses_correctes']))
             
-            # On garde en mémoire pour le récap
-            historique.append({
-                'question': question['question'],
-                'reponse': reponse,
-                'reussite': reussite,
-                'correction': question['reponse_correcte'] if question['type'] == 'simple' else question['reponses_correctes']
+            # Je garde en mémoire pour après
+            reponses.append({
+                'question': q['question'],
+                'reponse': rep,
+                'ok': ok,
+                'correction': q['reponse_correcte'] if q['type'] == 'simple' else q['reponses_correctes']
             })
         
-        # Le récap
-        print("\n=== RÉCAP DE TES RÉPONSES ===")
-        for i, rep in enumerate(historique, 1):
-            print(f"\nQuestion {i}: {rep['question']}")
-            if isinstance(rep['reponse'], list):
-                print(f"Tu as répondu: {', '.join(rep['reponse'])}")
+        # Je fais un récap
+        print("\n=== CE QUE TU AS RÉPONDU ===")
+        for i, r in enumerate(reponses, 1):
+            print(f"\nQuestion {i}: {r['question']}")
+            if isinstance(r['reponse'], list):
+                print(f"T'as répondu: {', '.join(r['reponse'])}")
             else:
-                print(f"Tu as répondu: {rep['reponse']}")
-            if not rep['reussite']:
-                if isinstance(rep['correction'], list):
-                    print(f"Il fallait répondre: {', '.join(rep['correction'])}")
+                print(f"T'as répondu: {r['reponse']}")
+            if not r['ok']:
+                if isinstance(r['correction'], list):
+                    print(f"Fallait répondre: {', '.join(r['correction'])}")
                 else:
-                    print(f"Il fallait répondre: {rep['correction']}")
+                    print(f"Fallait répondre: {r['correction']}")
         
-        # Note finale
-        print(f"\nTa note: {points}/{nb_questions} ({points*20}%)")
+        # Je mets la note
+        print(f"\nTa note: {score}/5 ({score*20}%)")
         
-        if points == nb_questions:
-            print("Parfait !")
-        elif points >= nb_questions/2:
-            print("Bien joué !")
+        if score == 5:
+            print("T'es trop fort!!")
+        elif score >= 3:
+            print("Pas mal du tout!")
         else:
-            print("Courage, continue de réviser !")
+            print("Allez, faut réviser encore un peu!")
         
-        # On propose de continuer
-        donnees = charger_questions()
-        return fin_quiz(quiz, donnees['quiz_list'])
+        # Je propose de continuer
+        donnees = lire_fichier()
+        return fin_du_quiz(quiz, donnees['quiz_list'])
         
     except Exception as e:
-        print(f"Oups, il y a eu un problème: {str(e)}")
+        print(f"Oups y'a un bug: {str(e)}")
         return False
 
-def fin_quiz(quiz_actuel, liste_quiz):
+def fin_du_quiz(quiz_actuel, liste_quiz):
     while True:
         choix = input("\nTu veux :\n1. Refaire ce quiz\n2. Essayer un autre quiz\n3. Arrêter\nTon choix (1-3): ")
         if choix == "1":
-            return lancer_quiz(quiz_actuel)
+            return faire_quiz(quiz_actuel)
         elif choix == "2":
             nouveau_quiz = choisir_quiz(liste_quiz)
-            return lancer_quiz(nouveau_quiz)
+            return faire_quiz(nouveau_quiz)
         elif choix == "3":
             print("\nA plus !")
             return False
@@ -186,9 +201,9 @@ def demarrer_jeu():
     print(f"Cool {nom}, on commence !")
     
     try:
-        donnees = charger_questions()
+        donnees = lire_fichier()
         quiz_choisi = choisir_quiz(donnees['quiz_list'])
-        return lancer_quiz(quiz_choisi)
+        return faire_quiz(quiz_choisi)
     except Exception as e:
         print(f"Oups, il y a eu un problème: {str(e)}")
         return False
