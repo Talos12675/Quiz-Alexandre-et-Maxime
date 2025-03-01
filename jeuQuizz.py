@@ -11,6 +11,10 @@ def charger_questions():
 def poser_question_simple(question):
     print("\nQuestion:", question['question'])
     
+    # Afficher si un indice est disponible
+    if 'indice' in question:
+        print("(Tu peux demander un indice en tapant 'indice')")
+    
     # Liste pour stocker les réponses
     reponses = []
     bonne_reponse = question['reponse_correcte']
@@ -32,17 +36,34 @@ def poser_question_simple(question):
     print("2.", reponses[1])
     print("3.", reponses[2])
     
-    # Réponse du joueur
-    reponse = input("\nTa réponse (1, 2 ou 3): ")
-    
-    # Vérification
-    if reponse == "1" or reponse == "2" or reponse == "3":
-        return reponses[int(reponse)-1]
-    else:
-        return "J'ai pas compris..."
+    while True:
+        # Réponse du joueur
+        reponse = input("\nTa réponse (1, 2 ou 3): ").lower()
+        
+        # Gestion de l'indice
+        if reponse == "indice":
+            if 'indice' in question:
+                print("\nIndice:", question['indice'])
+                print("\n1.", reponses[0])
+                print("2.", reponses[1])
+                print("3.", reponses[2])
+                continue
+            else:
+                print("Désolé, il n'y a pas d'indice pour cette question.")
+                continue
+        
+        # Vérification
+        if reponse in ["1", "2", "3"]:
+            return reponses[int(reponse)-1]
+        else:
+            return "J'ai pas compris..."
 
 def poser_question_multiple(question):
     print("\nQuestion:", question['question'])
+    
+    # Afficher si un indice est disponible
+    if 'indice' in question:
+        print("(Tu peux demander un indice en tapant 'indice')")
     
     # Préparation
     bonnes_reponses = question['reponses_correctes'].copy()
@@ -68,20 +89,32 @@ def poser_question_multiple(question):
     for i in range(len(toutes_reponses)):
         print(f"{i+1}. {toutes_reponses[i]}")
     
-    print("\nDonne les numéros des bonnes réponses avec des espaces entre")
-    reponse = input(f"Tes réponses (entre 1 et {nb_reponses_total}): ")
-    
-    # Vérification des réponses
-    try:
-        numeros = reponse.split()
-        reponses_choisies = []
-        for num in numeros:
-            num = int(num)
-            if num >= 1 and num <= nb_reponses_total:
-                reponses_choisies.append(toutes_reponses[num-1])
-        return reponses_choisies
-    except:
-        return "J'ai pas compris..."
+    while True:
+        print("\nDonne les numéros des bonnes réponses avec des espaces entre")
+        reponse = input(f"Tes réponses (entre 1 et {nb_reponses_total}): ").lower()
+        
+        # Gestion de l'indice
+        if reponse == "indice":
+            if 'indice' in question:
+                print("\nIndice:", question['indice'])
+                for i in range(len(toutes_reponses)):
+                    print(f"{i+1}. {toutes_reponses[i]}")
+                continue
+            else:
+                print("Désolé, il n'y a pas d'indice pour cette question.")
+                continue
+                
+        # Vérification des réponses
+        try:
+            numeros = reponse.split()
+            reponses_choisies = []
+            for num in numeros:
+                num = int(num)
+                if num >= 1 and num <= nb_reponses_total:
+                    reponses_choisies.append(toutes_reponses[num-1])
+            return reponses_choisies
+        except:
+            return "J'ai pas compris..."
 
 def lancer_quiz(quiz):
     try:

@@ -11,84 +11,96 @@
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Bleu", "Rouge", "Vert", "Jaune", "Orange", "Violet"],
                     "reponse_correcte": "Bleu",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "Regarde par la fenêtre quand il fait beau !"
                 },
                 {
                     "question": "Combien y a-t-il de jours dans une semaine ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["7", "5", "6", "8", "9", "10"],
                     "reponse_correcte": "7",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "Le weekend compte 2 jours"
                 },
                 {
                     "question": "Quel animal fait 'miaou' ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Chat", "Chien", "Vache", "Poule", "Cochon", "Mouton"],
                     "reponse_correcte": "Chat",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "C'est l'animal de compagnie préféré des sorcières"
                 },
                 {
                     "question": "Quelle est la capitale de la France ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Paris", "Lyon", "Marseille", "Lille", "Bordeaux", "Toulouse"],
                     "reponse_correcte": "Paris",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "On y trouve la Tour Eiffel"
                 },
                 {
                     "question": "Quel fruit est jaune et courbé ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Banane", "Pomme", "Orange", "Fraise", "Poire", "Raisin"],
                     "reponse_correcte": "Banane",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "Les singes adorent ce fruit"
                 },
                 {
                     "question": "Quel est le plus gros animal terrestre ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Éléphant", "Girafe", "Lion", "Hippopotame", "Rhinocéros", "Gorille"],
                     "reponse_correcte": "Éléphant",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "Il a une longue trompe"
                 },
                 {
                     "question": "Quelle saison vient après l'été ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Automne", "Hiver", "Printemps", "Été", "Mai", "Juin"],
                     "reponse_correcte": "Automne",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "C'est la saison où les feuilles tombent des arbres"
                 },
                 {
                     "question": "Combien font 2 + 2 ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["4", "3", "5", "6", "2", "7"],
                     "reponse_correcte": "4",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "Compte sur tes doigts"
                 },
                 {
                     "question": "Quelle planète habitons-nous ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Terre", "Mars", "Jupiter", "Vénus", "Saturne", "Mercure"],
                     "reponse_correcte": "Terre",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "C'est la planète bleue"
                 },
                 {
                     "question": "Quel animal coasse ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Grenouille", "Poule", "Canard", "Chat", "Chien", "Cochon"],
                     "reponse_correcte": "Grenouille",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "On la trouve près des mares et elle est verte"
                 },
                 {
                     "question": "Quelles sont les couleurs du drapeau français ?",
                     "nombre_reponses_a_afficher": 5,
                     "reponses_possibles": ["Bleu", "Blanc", "Rouge", "Vert", "Jaune", "Noir"],
                     "reponses_correctes": ["Bleu", "Blanc", "Rouge"],
-                    "type": "multiple"
+                    "type": "multiple",
+                    "indice": "Ce sont les mêmes couleurs que le drapeau des Pays-Bas, mais dans un ordre différent"
                 },
                 {
                     "question": "Quels sont les repas de la journée ?",
                     "nombre_reponses_a_afficher": 5,
                     "reponses_possibles": ["Petit-déjeuner", "Déjeuner", "Dîner", "Goûter", "Brunch", "Souper"],
                     "reponses_correctes": ["Petit-déjeuner", "Déjeuner", "Dîner"],
-                    "type": "multiple"
+                    "type": "multiple",
+                    "indice": "Le premier est le petit-déjeuner"
                 }
             ]
         },
@@ -103,49 +115,56 @@
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["France", "Espagne", "Italie", "Allemagne", "Angleterre", "Portugal"],
                     "reponse_correcte": "France",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "C'est le pays de la baguette et du fromage"
                 },
                 {
                     "question": "Quel est le plus grand océan ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Pacifique", "Atlantique", "Indien", "Arctique", "Méditerranée", "Mer Rouge"],
                     "reponse_correcte": "Pacifique",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "Il borde l'Asie et l'Amérique"
                 },
                 {
                     "question": "Sur quel continent se trouve la France ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Europe", "Asie", "Afrique", "Amérique", "Océanie", "Antarctique"],
                     "reponse_correcte": "Europe",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "C'est le continent où se trouve l'Union Européenne"
                 },
                 {
                     "question": "Quelle est la capitale de l'Angleterre ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Londres", "Paris", "Madrid", "Berlin", "Rome", "Lisbonne"],
                     "reponse_correcte": "Londres",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "Big Ben s'y trouve"
                 },
                 {
                     "question": "Quel pays a la forme d'une botte ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Italie", "France", "Espagne", "Grèce", "Portugal", "Allemagne"],
                     "reponse_correcte": "Italie",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "C'est le pays des pâtes et de la pizza"
                 },
                 {
                     "question": "Quels sont les pays voisins de la France ?",
                     "nombre_reponses_a_afficher": 5,
                     "reponses_possibles": ["Espagne", "Italie", "Allemagne", "Belgique", "Portugal", "Grèce"],
                     "reponses_correctes": ["Espagne", "Italie", "Allemagne", "Belgique"],
-                    "type": "multiple"
+                    "type": "multiple",
+                    "indice": "L'Espagne est au sud, l'Allemagne à l'est"
                 },
                 {
                     "question": "Quelles sont les saisons de l'année ?",
                     "nombre_reponses_a_afficher": 5,
                     "reponses_possibles": ["Printemps", "Été", "Automne", "Hiver", "Mai", "Septembre"],
                     "reponses_correctes": ["Printemps", "Été", "Automne", "Hiver"],
-                    "type": "multiple"
+                    "type": "multiple",
+                    "indice": "Elles se suivent dans cet ordre : printemps, été, automne, hiver"
                 }
             ]
         },
@@ -160,21 +179,24 @@
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Louis XIV", "Napoléon", "François Ier", "Henri IV", "Louis XVI", "Louis XV"],
                     "reponse_correcte": "Louis XIV",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "Il a fait construire le château de Versailles"
                 },
                 {
                     "question": "Comment s'appelle le personnage qui a résisté aux Romains avec sa potion magique ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Astérix", "Obélix", "Panoramix", "César", "Abraracourcix", "Idéfix"],
                     "reponse_correcte": "Astérix",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "Son meilleur ami s'appelle Obélix"
                 },
                 {
                     "question": "Qui a peint La Joconde ?",
                     "nombre_reponses_a_afficher": 3,
                     "reponses_possibles": ["Léonard de Vinci", "Picasso", "Van Gogh", "Michel-Ange", "Monet", "Renoir"],
                     "reponse_correcte": "Léonard de Vinci",
-                    "type": "simple"
+                    "type": "simple",
+                    "indice": "C'était un grand artiste italien de la Renaissance"
                 },
                 {
                     "question": "Quel célèbre navigateur a découvert l'Amérique ?",
